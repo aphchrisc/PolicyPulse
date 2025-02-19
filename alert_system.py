@@ -13,7 +13,7 @@ class AlertSystem:
 
     def update_email(self, email: str) -> bool:
         """Update user's email for alerts"""
-        # In a real application, this would validate and store the email
+        
         return True
 
     def send_alert(self, recipient_email: str, legislation_updates: List[Dict]) -> bool:
