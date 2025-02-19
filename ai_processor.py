@@ -25,7 +25,7 @@ class AIProcessor:
             logger.warning("OpenAI API key not found in environment variables")
         # Instantiate the client using the new call format
         self.client = OpenAI(api_key=self.api_key)
-        self.model = "gpt-4o"  # DO NOT MODIFY UNLESS THE USER EXPLICITLY GIVES YOU THE PROMPT and CONFIRMS IT
+        self.model = "gpt-4o"  # DO NOT MODIFY 
 
     def _extract_json(self, text: str) -> str:
         """
