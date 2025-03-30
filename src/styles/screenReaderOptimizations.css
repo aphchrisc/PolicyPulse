@@ -1,0 +1,140 @@
+/* Screen Reader Optimizations CSS */
+
+/* Hide elements visually but keep them accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* When sr-optimized class is applied to the document */
+.sr-optimized .chart-description {
+  display: block !important;
+  margin-bottom: 1rem;
+}
+
+.sr-optimized .data-table {
+  display: table !important;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+}
+
+.sr-optimized .data-table caption {
+  font-weight: bold;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.sr-optimized .data-table th,
+.sr-optimized .data-table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+/* Increase focus visibility */
+.sr-optimized *:focus {
+  outline: 3px solid #2563eb !important;
+  outline-offset: 2px !important;
+}
+
+/* Add additional context for screen readers */
+.sr-optimized .bill-card::before {
+  content: "Bill information: ";
+  clip: auto;
+  height: auto;
+  width: auto;
+  margin: 0;
+  position: relative;
+  font-weight: bold;
+}
+
+.sr-optimized .analysis-section::before {
+  content: "Analysis section: ";
+  clip: auto;
+  height: auto;
+  width: auto;
+  margin: 0;
+  position: relative;
+  font-weight: bold;
+}
+
+/* Improve form controls for screen readers */
+.sr-optimized input[type="checkbox"] + label::before,
+.sr-optimized input[type="radio"] + label::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+}
+
+.sr-optimized input[type="checkbox"]:checked + label::before {
+  content: "✓";
+  text-align: center;
+  line-height: 1rem;
+}
+
+.sr-optimized input[type="radio"]:checked + label::before {
+  content: "●";
+  text-align: center;
+  line-height: 1rem;
+}
+
+/* Improve navigation for screen readers */
+.sr-optimized nav {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+}
+
+.sr-optimized nav ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.sr-optimized nav li {
+  margin-bottom: 0.5rem;
+}
+
+.sr-optimized nav a {
+  display: block;
+  padding: 0.5rem;
+  text-decoration: underline;
+}
+
+/* Improve table navigation */
+.sr-optimized table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.sr-optimized th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.sr-optimized th, 
+.sr-optimized td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+/* Improve chart accessibility */
+.sr-optimized .chart-container {
+  position: relative;
+}
+
+.sr-optimized .chart-container .chart-text {
+  display: block !important;
+  margin-top: 1rem;
+}
