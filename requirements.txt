@@ -1,0 +1,42 @@
+# PolicyPulse Application Dependencies
+
+# Database
+sqlalchemy>=2.0.0
+sqlalchemy-utils>=0.41.0
+psycopg2-binary>=2.9.5
+alembic>=1.9.0
+
+# API
+fastapi>=0.95.0
+uvicorn>=0.21.0
+pydantic>=1.10.7
+starlette>=0.26.1
+
+# Testing
+pytest>=7.3.1
+httpx>=0.24.0
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.28.2
+pyjwt>=2.6.0
+python-multipart>=0.0.6
+email-validator>=2.0.0
+
+# Analysis
+langchain>=0.0.200
+openai>=0.27.8
+tiktoken>=0.4.0
+numpy>=1.24.3
+PyPDF2>=3.0.0  # For PDF text extraction
+
+# Background tasks
+APScheduler>=3.10.1
+# Added from the code block
+orjson>=3.10.0
+
+# Storage
+boto3>=1.26.0  # For AWS S3
+azure-storage-blob>=12.14.0  # For Azure Blob Storage
+python-readability>=0.3.1  # For HTML content extraction
+trafilatura>=1.4.0  # Alternative for HTML content extraction
