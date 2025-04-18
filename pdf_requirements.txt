@@ -1,0 +1,8 @@
+# PDF conversion libraries
+pdf2image>=1.16.0
+PyMuPDF>=1.20.0
+Pillow>=9.0.0
+# Note: poppler-utils is a system package, not a Python package
+# Install it using your system package manager:
+# Ubuntu/Debian: sudo apt-get install poppler-utils
+# macOS: brew install poppler

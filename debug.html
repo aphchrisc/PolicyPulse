@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PolicyPulse API Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .result {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            margin-top: 10px;
+            max-height: 300px;
+            overflow: auto;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>PolicyPulse API Debug</h1>
+    
+    <div class="test-section">
+        <h2>API Configuration</h2>
+        <div id="api-config" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Impact Summary API Test</h2>
+        <button id="test-impact">Test Impact Summary API</button>
+        <div id="impact-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Recent Activity API Test</h2>
+        <button id="test-activity">Test Recent Activity API</button>
+        <div id="activity-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Status Breakdown API Test</h2>
+        <button id="test-status">Test Status Breakdown API</button>
+        <div id="status-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Trending Topics API Test</h2>
+        <button id="test-topics">Test Trending Topics API</button>
+        <div id="topics-result" class="result"></div>
+    </div>
+    
+    <script>
+        // Display API configuration
+        const apiUrl = 'http://localhost:8000';
+        document.getElementById('api-config').textContent = `API URL: ${apiUrl}`;
+        
+        // Helper function to make API requests
+        async function fetchAPI(endpoint, params = {}) {
+            try {
+                const url = new URL(`${apiUrl}${endpoint}`);
+                Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+                
+                console.log(`Fetching: ${url.toString()}`);
+                
+                const response = await fetch(url.toString(), {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                return { success: true, data };
+            } catch (error) {
+                console.error(`API Error: ${error.message}`);
+                return { success: false, error: error.message };
+            }
+        }
+        
+        // Test Impact Summary API
+        document.getElementById('test-impact').addEventListener('click', async () => {
+            const resultElement = document.getElementById('impact-result');
+            resultElement.textContent = 'Loading...';
+            
+            try {
+                const result = await fetchAPI('/dashboard/impact-summary');
+                resultElement.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.message}`;
+            }
+        });
+        
+        // Test Recent Activity API
+        document.getElementById('test-activity').addEventListener('click', async () => {
+            const resultElement = document.getElementById('activity-result');
+            resultElement.textContent = 'Loading...';
+            
+            try {
+                const result = await fetchAPI('/dashboard/recent-activity');
+                resultElement.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.message}`;
+            }
+        });
+        
+        // Test Status Breakdown API
+        document.getElementById('test-status').addEventListener('click', async () => {
+            const resultElement = document.getElementById('status-result');
+            resultElement.textContent = 'Loading...';
+            
+            try {
+                const result = await fetchAPI('/dashboard/status-breakdown');
+                resultElement.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.message}`;
+            }
+        });
+        
+        // Test Trending Topics API
+        document.getElementById('test-topics').addEventListener('click', async () => {
+            const resultElement = document.getElementById('topics-result');
+            resultElement.textContent = 'Loading...';
+            
+            try {
+                const result = await fetchAPI('/dashboard/trending-topics');
+                resultElement.textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

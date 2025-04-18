@@ -1,0 +1,4 @@
+<script>start("/Users/aiml/Downloads/pp4-main/mock_data/");</script>
+<script>onHasParentDirectory();</script>
+<script>addRow("high_impact_alerts.json","high_impact_alerts.json",0,7846,"7.7 kB",1744171866,"4/8/25, 11:11:06 PM");</script>
+<script>addRow("README.md","README.md",0,2542,"2.5 kB",1744171937,"4/8/25, 11:12:17 PM");</script>
